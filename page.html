@@ -33,10 +33,11 @@
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]);
+            if (r != null) return decodeURIComponent(r[2]);
             return null;
         }
         var n = GetQueryString("n");
+        console.log(n + "    ->\n" + encodeURIComponent( n))
         $.get("api/md?n=" +encodeURIComponent( n), function (data, status) {
             $(".markdown-body").html(String(data));
         });
