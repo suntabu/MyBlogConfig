@@ -36,11 +36,8 @@
             if (r != null) return unescape(r[2]);
             return null;
         }
-
         var n = GetQueryString("n");
-
-
-        $.get("api/md?n=" + n, function (data, status) {
+        $.get("api/md?n=" +encodeURIComponent( n), function (data, status) {
             $(".markdown-body").html(String(data));
         });
 
