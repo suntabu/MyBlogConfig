@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/assets/syntax.css"/>
     <link rel="stylesheet" href="/assets/hux-blog.css"/>
     <link rel="stylesheet" href="/assets/bootstrap.css"/>
-
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <style>
         /* Page tweaks */
         .preview-page {
@@ -40,7 +40,7 @@
                         "<br/>" +
                         "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
 
-                    $(".markdown-body").append(html);
+                    $(".post-container").prepend(html);
                 }
 
             } catch (e) {
@@ -51,8 +51,7 @@
 
     </script>
 
-    <script async type="text/javascript" id="clstr_globe"
-            src="//cdn.clustrmaps.com/globe.js?d=38r01flTtjF-iBe_Kt5HudHHNUiNKNL6o5qh1qS0zP8"></script>
+
     <link rel="stylesheet" href="assets/bootstrap.css">
 
     <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
@@ -119,6 +118,105 @@
         </div>
     </header>
 
+    <div class="container">
+        <div class="row">
+
+
+            <!-- USE SIDEBAR -->
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+
+                <!-- Pager -->
+
+                <ul class="pager">
+
+
+                    <li class="next">
+                        <a href="/page2">Older Posts →</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+
+                <!-- Featured Tags -->
+
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="">FOOT PRINTS</a></h5>
+
+                    <script type="text/javascript" id="clstr_globe"
+                            src="//cdn.clustrmaps.com/globe.js?d=38r01flTtjF-iBe_Kt5HudHHNUiNKNL6o5qh1qS0zP8"></script>
+
+                </section>
+
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr>
+                    <h5><a href="">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        <img src="/img/paladin.jpg">
+                        <p class="highlight cm">
+                            As The last ship sailed towards the distant horizon, I sat there watching on a rock, My mind
+                            slowly drifting away, Forming into my... Dreamtale
+                        </p>
+
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+
+                            <!--
+                                                        <li>
+                                                            <a target="_blank" href="https://twitter.com/suntabu">
+                                                                <span class="fa-stack fa-lg">
+                                                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                                                </span>
+                                                            </a>
+                                                        </li>-->
+
+                            <li>
+                                <a target="_blank" href="https://github.com/suntabu">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+
+                <hr>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
     <div id="preview-page" class="preview-page">
 
 
@@ -129,6 +227,8 @@
 
                     </article>
                 </div>
+
+
             </div>
 
         </div>
