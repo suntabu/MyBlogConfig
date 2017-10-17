@@ -35,7 +35,9 @@
 
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+
             var r = window.location.search.substr(1).match(reg);
+            console.log(window.location.search.substr(1));
             if (r != null) return decodeURIComponent(r[2]);
             return null;
         }
@@ -43,7 +45,12 @@
         var n = GetQueryString("n");
         console.log(n + "    ->\n" + encodeURIComponent(n))
         $.get("api/md?n=" + encodeURIComponent(n), function (data, status) {
-            $(".markdown-body").html(String(data));
+            var ab = JSON.parse(data);
+            $("#article-title").html(ab.title);
+            $("#article-tag").html(ab.tag);
+            $("#article-tag").href = "/tags/" + ab.tag;
+            $("#article-meta").html("Post by Suntabu on " + "");
+            $(".markdown-body").html(ab.htmlStr);
         });
 
 
@@ -94,7 +101,7 @@
                         </li>
 
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a>Tags</a>
                         </li>
 
                     </ul>
@@ -104,22 +111,16 @@
         </div>
         <!-- /.container -->
     </nav>
-    <header class="intro-header">
+    <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
                         <div class="tags">
-
-                            <a class="tag" href="/tags/#Game Art Tricks" title="Game Art Tricks">Game Art Tricks</a>
-
+                            <a class="tag" id="article-tag"></a>
                         </div>
-                        <h1 id="smoke">Smoke材质的二三事</h1>
-
-
-                        <h2 class="subheading" id="game-art-tricks">Game Art Tricks</h2>
-
-                        <span class="meta">Posted by Candycat on July 14, 2017</span>
+                        <h1 id="article-title"></h1>
+                        <span id="article-meta" class="meta">Posted by Candycat on July 14, 2017</span>
                     </div>
                 </div>
             </div>
