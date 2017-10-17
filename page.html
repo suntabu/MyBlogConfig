@@ -49,7 +49,7 @@
             $("#article-title").html(ab.title);
             $("#article-tag").html(ab.tag);
             $("#article-tag").href = "/tags/" + ab.tag;
-            $("#article-meta").html("Post by Suntabu on " + "");
+            $("#article-meta").html("Posted by Suntabu on " + new Date(ab.date).toDateString());
             $(".markdown-body").html(ab.htmlStr);
         });
 

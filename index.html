@@ -37,7 +37,8 @@
                         "<h2 class=\"post-title\">" + md.title + "</h2>" +
                         "<h3 class=\"post-subtitle\">" + md.tag + "</h3>" +
                         "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
-                        "<p class=\"post-meta\">" + md.date + "</p>" + "</div>"
+                        "<br/>" +
+                        "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
 
                     $(".markdown-body").append(html);
                 }
