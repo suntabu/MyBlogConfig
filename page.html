@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Suntabu</title>
+    <link rel="stylesheet" href="/assets/syntax.css"/>
+    <link rel="stylesheet" href="/assets/hux-blog.css"/>
+    <link rel="stylesheet" href="/assets/bootstrap.css"/>
     <link rel="stylesheet" href="/assets/frameworks-d7.css"/>
     <link rel="stylesheet" href="/assets/github-9b.css"/>
     <link rel="stylesheet" href="/assets/site-9b.css"/>
@@ -36,9 +39,10 @@
             if (r != null) return decodeURIComponent(r[2]);
             return null;
         }
+
         var n = GetQueryString("n");
-        console.log(n + "    ->\n" + encodeURIComponent( n))
-        $.get("api/md?n=" +encodeURIComponent( n), function (data, status) {
+        console.log(n + "    ->\n" + encodeURIComponent(n))
+        $.get("api/md?n=" + encodeURIComponent(n), function (data, status) {
             $(".markdown-body").html(String(data));
         });
 
@@ -55,6 +59,72 @@
 </head>
 <body>
 <div class="page">
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Suntabu Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- Known Issue, found by Hux:
+                <nav>'s height woule be hold on by its content.
+                so, when navbar scale out, the <nav> will cover tags.
+                also mask any touch event of tags, unfortunately.
+            -->
+            <div id="huxblog_navbar">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+
+                        <li>
+                            <a href="/portfolio/">Portfolio</a>
+                        </li>
+
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <header class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <div class="tags">
+
+                            <a class="tag" href="/tags/#Game Art Tricks" title="Game Art Tricks">Game Art Tricks</a>
+
+                        </div>
+                        <h1 id="smoke">Smoke材质的二三事</h1>
+
+
+                        <h2 class="subheading" id="game-art-tricks">Game Art Tricks</h2>
+
+                        <span class="meta">Posted by Candycat on July 14, 2017</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div id="preview-page" class="preview-page">
 
 
@@ -72,70 +142,6 @@
     </div>
 
 </div>
-<script>
-    function showCanonicalImages() {
-        var images = document.getElementsByTagName('img');
-        if (!images) {
-            return;
-        }
-        for (var index = 0; index < images.length; index++) {
-            var image = images[index];
-            if (image.getAttribute('data-canonical-src') && image.src !== image.getAttribute('data-canonical-src')) {
-                image.src = image.getAttribute('data-canonical-src');
-            }
-        }
-    }
-
-    function scrollToHash() {
-        if (location.hash && !document.querySelector(':target')) {
-            var element = document.getElementById('user-content-' + location.hash.slice(1));
-            if (element) {
-                element.scrollIntoView();
-            }
-        }
-    }
-
-    function autorefreshContent(eventSourceUrl) {
-        var initialTitle = document.title;
-        var contentElement = document.getElementById('grip-content');
-        var source = new EventSource(eventSourceUrl);
-        var isRendering = false;
-
-        source.onmessage = function (ev) {
-            var msg = JSON.parse(ev.data);
-            if (msg.updating) {
-                isRendering = true;
-                document.title = '(Rendering) ' + document.title;
-            } else {
-                isRendering = false;
-                document.title = initialTitle;
-                contentElement.innerHTML = msg.content;
-                showCanonicalImages();
-            }
-        }
-
-        source.onerror = function (e) {
-            if (e.readyState === EventSource.CLOSED && isRendering) {
-                isRendering = false;
-                document.title = initialTitle;
-            }
-        }
-    }
-
-    window.onhashchange = function () {
-        scrollToHash();
-    }
-
-    window.onload = function () {
-        scrollToHash();
-    }
-
-    showCanonicalImages();
-    //
-    //    var autorefreshUrl = document.getElementById('preview-page').getAttribute('data-autorefresh-url');
-    //    if (autorefreshUrl) {
-    //        autorefreshContent(autorefreshUrl);
-    //    }
-</script>
+<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
 </body>
 </html>
