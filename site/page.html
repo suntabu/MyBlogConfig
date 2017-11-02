@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/frameworks-d7.css"/>
     <link rel="stylesheet" href="/assets/github-9b.css"/>
     <link rel="stylesheet" href="/assets/site-9b.css"/>
+
     <link rel="stylesheet" href="/static/octicons/octicons.css"/>
     <meta charset="UTF-8">
 
@@ -54,10 +55,28 @@
             $(".markdown-body").html(ab.htmlStr);
         });
 
+        $.get("api/taglist", function (data, status) {
+            try {
+                for (var i = 0; i < data.length; i++) {
+                    var md = data[i];
+                    var html = "<a href=\"/taglist.html?t=" + md + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+
+                    $(".tags").prepend(html);
+
+                }
+
+            } catch (e) {
+                alert(e.message + "\n" + data);
+            }
+        });
+
+
         (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-3664289447537902",
             enable_page_level_ads: true
         });
+
+
     </script>
 
 
@@ -99,7 +118,7 @@
                         <!--</li>-->
 
                         <li>
-                            <a>Tags</a>
+                            <a href="/tags/">Tags</a>
                         </li>
 
                     </ul>
@@ -142,6 +161,15 @@
 
 </div>
 
+<!-- Featured Tags -->
+<section>
+    <hr class="hidden-sm hidden-xs">
+    <h5><a href="">FEATURED TAGS</a></h5>
+    <div class="tags">
+
+
+    </div>
+</section>
 
 <!-- Footer -->
 <footer>
@@ -149,8 +177,6 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
-
-
 
 
                     <li>
@@ -163,7 +189,6 @@
                     </li>
 
 
-
                 </ul>
                 <p class="copyright text-muted">
                     Copyright &copy; Suntabu Blog 2017
@@ -174,14 +199,7 @@
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js "></script>
 
 
 <!-- async load function -->
@@ -201,16 +219,7 @@
     async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
         hljs.initHighlightingOnLoad();
     })
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
+
 </script>
 <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="老当益壮">
-    <meta name="keyword"  content="suntabu tags">
+    <meta name="keyword" content="suntabu tags">
     <link rel="shortcut icon" href="/favicon.ico">
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <title>Tags - Suntabu的博客 | Suntabu Blog</title>
 
     <link rel="canonical" href="www.suntabu.com/tags/">
@@ -83,7 +82,7 @@
                     </li>
 
                     <!--<li>-->
-                        <!--<a href="/portfolio/">Portfolio</a>-->
+                    <!--<a href="/portfolio/">Portfolio</a>-->
                     <!--</li>-->
 
                     <li>
@@ -101,29 +100,47 @@
     // Drop Bootstarp low-performance Navbar
     // Use customize navbar with high-quality material design animation
     // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
+    var $body = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
 
     $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
+
+    function handleMagic(e) {
         if ($navbar.className.indexOf('in') > 0) {
             // CLOSE
             $navbar.className = " ";
             // wait until animation end.
-            setTimeout(function(){
+            setTimeout(function () {
                 // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
+                if ($navbar.className.indexOf('in') < 0) {
                     $collapse.style.height = "0px"
                 }
-            },400)
-        }else{
+            }, 400)
+        } else {
             // OPEN
             $collapse.style.height = "auto"
             $navbar.className += " in";
         }
     }
+
+
+
+    $.get("api/taglist", function (data, status) {
+        try {
+            for (var i = 0; i < data.length; i++) {
+                var md = data[i];
+                var html = "<a href=\"/taglist.html?t=" + md + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+
+                $("#tag_cloud").prepend(html);
+
+            }
+
+        } catch (e) {
+            alert(e.message + "\n" + data);
+        }
+    });
 </script>
 
 
@@ -144,89 +161,15 @@
 <!-- Main Content -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="tag_list">
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
-
-                <a href="#闲谈" title="闲谈" rel="3">闲谈</a>
-
-                <a href="#Graphics Hardware" title="Graphics Hardware" rel="3">Graphics Hardware</a>
-
-                <a href="#读书笔记" title="读书笔记" rel="3">读书笔记</a>
-
-                <a href="#Game Art Tricks" title="Game Art Tricks" rel="5">Game Art Tricks</a>
-
-                <a href="#Research" title="Research" rel="2">Research</a>
-
-                <a href="#工作记录" title="工作记录" rel="1">工作记录</a>
-
-                <a href="#博客更新" title="博客更新" rel="1">博客更新</a>
 
             </div>
 
             <!-- 标签列表 -->
 
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="闲谈">
-                    <span class="tag-text">闲谈</span>
-                </span>
 
-
-
-            </div>
-
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Graphics Hardware">
-                    <span class="tag-text">Graphics Hardware</span>
-                </span>
-
-
-
-            </div>
-
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="读书笔记">
-                    <span class="tag-text">读书笔记</span>
-                </span>
-
-
-
-            </div>
-
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Game Art Tricks">
-                    <span class="tag-text">Game Art Tricks</span>
-                </span>
-
-
-
-            </div>
-
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="Research">
-                    <span class="tag-text">Research</span>
-                </span>
-
-
-
-            </div>
-
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="工作记录">
-                    <span class="tag-text">工作记录</span>
-                </span>
-
-
-            </div>
-
-            <div class="one-tag-list">
-			  	<span class="fa fa-tag listing-seperator" id="博客更新">
-                    <span class="tag-text">博客更新</span>
-                </span>
-
-
-
-            </div>
 
 
         </div>
@@ -242,8 +185,6 @@
                 <ul class="list-inline text-center">
 
 
-
-
                     <li>
                         <a target="_blank" href="https://github.com/suntabu">
                             <span class="fa-stack fa-lg">
@@ -252,7 +193,6 @@
                             </span>
                         </a>
                     </li>
-
 
 
                 </ul>
@@ -265,8 +205,6 @@
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="/js/bootstrap.min.js "></script>
@@ -282,34 +220,29 @@
             o = d.createElement(t),
             s = d.getElementsByTagName(t)[0];
         o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
         s.parentNode.insertBefore(o, s);
     }
 </script>
 
 <!-- Highlight.js -->
 <script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () {
         hljs.initHighlightingOnLoad();
     })
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
+
 </script>
 <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
 
 <!--fastClick.js -->
 <script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 

@@ -38,9 +38,9 @@
             return 0;
         }
 
-        var p = GetQueryString("p");
+        var p = GetQueryString("t");
 
-        $.get("api/list?p="+p, function (data, status) {
+        $.get("api/taglist?t=" + p, function (data, status) {
             try {
                 for (var i = 0; i < data.length; i++) {
                     var md = data[i];
@@ -81,6 +81,12 @@
             } catch (e) {
                 alert(e.message + "\n" + data);
             }
+        });
+
+        $(document).ready(function(){
+            $("h1").html("TAG - " + p);
+
+
         });
 
         (adsbygoogle = window.adsbygoogle || []).push({
@@ -143,9 +149,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                     <div class="site-heading">
-                        <h1>Suntabu Blog</h1>
+                        <h1></h1>
                         <!--<hr class="small">-->
-                        <span class="subheading">老当益壮~</span>
+                        <span class="subheading"></span>
                     </div>
                 </div>
             </div>
@@ -201,7 +207,6 @@
 
                     </div>
                 </section>
-
 
                 <section>
                     <hr class="hidden-sm hidden-xs">
@@ -308,8 +313,6 @@
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="/js/bootstrap.min.js "></script>
