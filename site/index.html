@@ -42,6 +42,7 @@
 
         $.get("api/list?p="+p, function (data, status) {
             try {
+                data = data.reverse()
                 for (var i = 0; i < data.length; i++) {
                     var md = data[i];
                     var html = "<div class=\"post-preview\">" +
@@ -52,7 +53,7 @@
                         "<br/>" +
                         "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
 
-                    $(".post-container").append(html);
+                    $(".post-container").prepend(html);
 
                     if (p <= 0) {
                         $("#p_p").hide();
