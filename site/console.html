@@ -46,6 +46,7 @@
         }
 
         function onOpen(evt) {
+            updateConsole("connection built!!")
         }
 
         function onClose(evt) {
@@ -96,9 +97,21 @@
 
         function runCommand(command) {
             scrollBottom();
-            websocket.send(encodeURI(encodeURIComponent(command)));
+            send(encodeURI(encodeURIComponent(command)));
 
             resetInput();
+        }
+
+        function send(msg) {
+            try {
+                if (websocket.readyState == 1)
+                    websocket.send(msg);
+                else
+                    updateConsole("refresh page to start socket")
+            } catch (e) {
+                updateConsole(e.message)
+            }
+
         }
 
 
@@ -129,7 +142,7 @@
                 return;
             }
 
-            websocket.send("commandHistory "+index);
+            websocket.send("commandHistory " + index);
 
         }
 
