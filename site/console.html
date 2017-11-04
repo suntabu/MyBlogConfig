@@ -7,10 +7,64 @@
     <title>Suntabu</title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script>
+
+        var websocket = null;
+        var c = getSpecificCookie('c');
+        if (c != "") {
+            $.get("/console/login?c=" + c, function (data, status) {
+                console.log(status + "  " + data);
+                if (status == "success") {
+                    $("#lf").hide();
+                    startWebSocket();
+                }
+            });
+
+        }
+
+        function startWebSocket() {
+            if (window.WebSocket) {
+                console.log('This browser supports WebSocket');
+                var wsUri = "ws://" + document.domain + ":8083/";
+                websocket = new WebSocket(wsUri);
+                websocket.onopen = function (evt) {
+                    onOpen(evt)
+                };
+                websocket.onclose = function (evt) {
+                    onClose(evt)
+                };
+                websocket.onmessage = function (evt) {
+                    onMessage(evt)
+                };
+                websocket.onerror = function (evt) {
+                    onError(evt)
+                };
+            } else {
+                console.log('This browser does not supports WebSocket');
+            }
+        }
+
+        function onOpen(evt) {
+        }
+
+        function onClose(evt) {
+        }
+
+        function onMessage(evt) {
+            console.log(evt.data);
+            updateConsole(evt.data);
+//            commandIndex = index;
+//            $("#input").val(String(data));
+
+        }
+
+        function onError(evt) {
+        }
+
         var commandIndex = -1;
         var hash = null;
+
 
         function scrollBottom() {
             $('#output').scrollTop($('#output')[0].scrollHeight);
@@ -42,39 +96,17 @@
 
         function runCommand(command) {
             scrollBottom();
-            var url = "console/run?command=" + encodeURI(encodeURIComponent(command));
+            websocket.send(encodeURI(encodeURIComponent(command)));
 
-            $.post(url, {c: getSpecificCookie("c")}, function (data, status, request) {
-                if (command.startsWith("login")) {
-                    var now = new Date();
-                    now.setDate(now.getDate() + 0.5);
-                    setcookie("c", data, now);
-                }
-
-                var disp = request.getResponseHeader('Content-Disposition');
-                if (disp && disp.search('attachment') != -1) {
-                    window.open(data);
-                    return;
-                }
-
-
-                updateConsole(function () {
-                    updateCommand(commandIndex - 1);
-                });
-            });
             resetInput();
         }
 
 
-        function updateConsole(callback) {
-            $.post("console/out", {c: getSpecificCookie("c")}, function (data, status) {
-                // Check if we are scrolled to the bottom to force scrolling on update
-                var output = $('#output');
-                shouldScroll = (output[0].scrollHeight - output.scrollTop()) == output.innerHeight();
-                output.val(String(data));
-                if (callback) callback();
-                if (shouldScroll) scrollBottom();
-            });
+        function updateConsole(data) {
+            var output = $('#output');
+            shouldScroll = (output[0].scrollHeight - output.scrollTop()) == output.innerHeight();
+            output.val(String(data));
+            if (shouldScroll) scrollBottom();
         }
 
         function resetInput() {
@@ -97,12 +129,8 @@
                 return;
             }
 
-            $.get("console/commandHistory?index=" + index, function (data, status) {
-                if (data) {
-                    commandIndex = index;
-                    $("#input").val(String(data));
-                }
-            });
+            websocket.send("commandHistory "+index);
+
         }
 
         function complete(command) {
@@ -113,14 +141,35 @@
             });
         }
 
-        // Poll to update the console output
-        window.setInterval(function () {
-            updateConsole(null)
-        }, 500);
+        function login() {
+            $("#lf").ajaxSubmit(function (message) {
+                setcookie('c', message);
+                $("#lf").hide();
+                startWebSocket();
+            });
+
+            return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+        }
     </script>
 </head>
 
 <body class="console">
+<form id="lf" accept-charset="UTF-8" action="/console/login" method="post" onsubmit="return login()">
+    <div class="column two-thirds">
+        <dl class="form-group">
+            <dt><label for="p">Name</label></dt>
+            <dd><input class="form-control" id="n" name="n" size="30" type="text" value=""></dd>
+        </dl>
+
+        <dl class="form-group">
+            <dt><label for="p">Password</label></dt>
+            <dd><input class="form-control" id="p" name="p" size="30" type="password" value=""></dd>
+        </dl>
+        <p>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </p>
+    </div>
+</form>
 <textarea id="output" class="console" readOnly></textarea>
 <textarea id="input" class="console" autofocus rows="1"></textarea>
 <form action="" method="post" enctype="multipart/form-data" name="form1" id="form1"></form>
