@@ -40,7 +40,7 @@
 
         var p = GetQueryString("p");
 
-        $.get("api/list?p="+p, function (data, status) {
+        $.get("api/list?p=" + p, function (data, status) {
             try {
                 data = data.reverse()
                 for (var i = 0; i < data.length; i++) {
@@ -254,28 +254,32 @@
                     </div>
                 </section>
                 <!-- Friends Blog -->
+
+                <script type="text/javascript">
+                    ( function () {
+                        if (window.CHITIKA === undefined) {
+                            window.CHITIKA = {'units': []};
+                        }
+                        ;
+                        var unit = {
+                            "calltype": "async[2]",
+                            "publisher": "suntabu",
+                            "width": 550,
+                            "height": 250,
+                            "sid": "Chitika Default"
+                        };
+                        var placement_id = window.CHITIKA.units.length;
+                        window.CHITIKA.units.push(unit);
+                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                    }());
+                </script>
+                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                 <hr>
             </div>
 
         </div>
     </div>
 
-
-    <div id="preview-page" class="preview-page">
-        <div role="main" class="main-content">
-            <div class="container new-discussion-timeline experiment-repo-nav">
-                <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
-                    <article class="markdown-body entry-content" itemprop="text" id="grip-content">
-
-                    </article>
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
 
 </div>
 <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=26534131&auto=1&height=66"></iframe>-->
@@ -308,7 +312,6 @@
         </div>
     </div>
 </footer>
-
 
 
 <!-- async load function -->
@@ -352,7 +355,25 @@
         if ($nav) FastClick.attach($nav);
     })
 </script>
-
+<script type="text/javascript">
+    ( function () {
+        if (window.CHITIKA === undefined) {
+            window.CHITIKA = {'units': []};
+        }
+        ;
+        var unit = {
+            "calltype": "async[2]",
+            "publisher": "suntabu",
+            "width": 550,
+            "height": 250,
+            "sid": "Chitika Default"
+        };
+        var placement_id = window.CHITIKA.units.length;
+        window.CHITIKA.units.push(unit);
+        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+    }());
+</script>
+<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
 <!--<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
 
