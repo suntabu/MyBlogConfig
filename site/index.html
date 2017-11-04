@@ -52,7 +52,7 @@
                         "<br/>" +
                         "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
 
-                    $(".post-container").prepend(html);
+                    $(".post-container").append(html);
 
                     if (p <= 0) {
                         $("#p_p").hide();
