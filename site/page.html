@@ -114,7 +114,7 @@
                         </li>
 
                         <!--<li>-->
-                            <!--<a href="/portfolio/">Portfolio</a>-->
+                        <!--<a href="/portfolio/">Portfolio</a>-->
                         <!--</li>-->
 
                         <li>
@@ -145,31 +145,118 @@
     </header>
     <div id="preview-page" class="preview-page">
 
+        <div style="float:left">
+            <script type="text/javascript">
+                ( function () {
+                    if (window.CHITIKA === undefined) {
+                        window.CHITIKA = {'units': []};
+                    }
+                    ;
+                    var unit = {
+                        "calltype": "async[2]",
+                        "publisher": "suntabu",
+                        "width": 300,
+                        "height": 250,
+                        "sid": "Chitika Default"
+                    };
+                    var placement_id = window.CHITIKA.units.length;
+                    window.CHITIKA.units.push(unit);
+                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                }());
+            </script>
+            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+        </div>
 
-        <div role="main" class="main-content">
+        <div role="main" class="main-content" style="float:left">
             <div class="container new-discussion-timeline experiment-repo-nav">
                 <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
                     <article class="markdown-body entry-content" itemprop="text" id="grip-content">
 
                     </article>
+
                 </div>
+
             </div>
 
         </div>
 
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+
+            <!-- Featured Tags -->
+            <section>
+                <hr class="hidden-sm hidden-xs">
+                <h5><a href="">FEATURED TAGS</a></h5>
+                <div class="tags">
+
+
+                </div>
+            </section>
+
+            <!-- Short About -->
+            <section class="visible-md visible-lg">
+                <hr>
+                <h5><a href="">ABOUT ME</a></h5>
+                <div class="short-about">
+
+                    <!--<img src="/img/paladin.jpg">-->
+                    <p class="highlight cm"
+                       style=" font-style: italic;    font-family: 'Lora', 'Times New Roman', serif;">
+                        As The last ship sailed towards the distant horizon, I sat there watching on a rock, My mind
+                        slowly drifting away, Forming into my... Dreamtale
+                    </p>
+
+
+                    <!-- SNS Link -->
+                    <ul class=" list-inline">
+
+                        <!--
+                                                    <li>
+                                                        <a target="_blank" href="https://twitter.com/suntabu">
+                                                            <span class="fa-stack fa-lg">
+                                                                <i class="fa fa-circle fa-stack-2x"></i>
+                                                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                                            </span>
+                                                        </a>
+                                                    </li>-->
+
+                        <li>
+                            <a target="_blank" href="https://github.com/suntabu">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </section>
+
+            <script type="text/javascript">
+                ( function() {
+                    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+                    var unit = {"calltype":"async[2]","publisher":"suntabu","width":300,"height":250,"sid":"Chitika Default"};
+                    var placement_id = window.CHITIKA.units.length;
+                    window.CHITIKA.units.push(unit);
+                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                }());
+            </script>
+            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+
+            <hr>
+        </div>
     </div>
 
 </div>
 
-<!-- Featured Tags -->
-<section>
-    <hr class="hidden-sm hidden-xs">
-    <h5><a href="">FEATURED TAGS</a></h5>
-    <div class="tags">
 
-
-    </div>
-</section>
 
 <!-- Footer -->
 <footer>
@@ -200,8 +287,6 @@
 </footer>
 
 
-
-
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -209,14 +294,18 @@
             o = d.createElement(t),
             s = d.getElementsByTagName(t)[0];
         o.src = u;
-        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        if (c) {
+            o.addEventListener('load', function (e) {
+                c(null, e);
+            }, false);
+        }
         s.parentNode.insertBefore(o, s);
     }
 </script>
 
 <!-- Highlight.js -->
 <script>
-    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+    async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () {
         hljs.initHighlightingOnLoad();
     })
 
@@ -225,9 +314,9 @@
 
 <!--fastClick.js -->
 <script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
         var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
+        if ($nav) FastClick.attach($nav);
     })
 </script>
 
