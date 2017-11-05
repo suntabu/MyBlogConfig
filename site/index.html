@@ -6,8 +6,9 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="/assets/syntax.css"/>
-    <link rel="stylesheet" href="/assets/hux-blog.css"/>
+    <link rel="stylesheet" href="/assets/hux-blog.min.css"/>
     <link rel="stylesheet" href="/assets/bootstrap.css"/>
+    <link rel="stylesheet" href="/assets/suntabu-blog.css"/>
     <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <style>
         /* Page tweaks */
@@ -45,10 +46,10 @@
                 data = data.reverse()
                 for (var i = 0; i < data.length; i++) {
                     var md = data[i];
-                    var html = "<div class=\"post-preview\">" +
+                    var html = "<div class=\"post-preview \">" +
                         "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
                         "<h2 class=\"post-title\">" + md.title + "</h2>" +
-                        "<h3 class=\"post-subtitle\">" + md.tag + "</h3>" +
+                        "<a class='ptags' href='/taglist.html?t=" + md.tag + "'>" + md.tag + "</a>" +
                         "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
                         "<br/>" +
                         "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
@@ -255,9 +256,18 @@
                 </section>
 
                 <script type="text/javascript">
-                    ( function() {
-                        if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-                        var unit = {"calltype":"async[2]","publisher":"suntabu","width":300,"height":250,"sid":"Chitika Default"};
+                    ( function () {
+                        if (window.CHITIKA === undefined) {
+                            window.CHITIKA = {'units': []};
+                        }
+                        ;
+                        var unit = {
+                            "calltype": "async[2]",
+                            "publisher": "suntabu",
+                            "width": 300,
+                            "height": 250,
+                            "sid": "Chitika Default"
+                        };
                         var placement_id = window.CHITIKA.units.length;
                         window.CHITIKA.units.push(unit);
                         document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
