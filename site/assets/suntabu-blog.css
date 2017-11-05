@@ -18,3 +18,11 @@
     background-color: rgba(255, 255, 255, 0.4);
     text-decoration: none;
 }
+
+.navbar-txt {
+    color: #fff;
+}
+
+.navbar-txt:hover {
+    color: #337ab7;
+}
