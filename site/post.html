@@ -5,7 +5,14 @@
     <title>Suntabu</title>
 </head>
 <body>
-<form accept-charset="UTF-8" action="/api/post" method="post">
+<script type="text/javascript">
+    function posted() {
+        alert("Posted!")
+        window.location.href = "index.html"
+        return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+    }
+</script>
+<form accept-charset="UTF-8" action="/api/post" method="post" onsubmit="return posted()">
     <div class="column two-thirds">
         <dl class="form-group">
             <dt><label for="md_title">Titile</label></dt>
