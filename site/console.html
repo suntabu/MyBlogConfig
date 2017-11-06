@@ -97,7 +97,11 @@
 
         function runCommand(command) {
             scrollBottom();
-            send(encodeURI(encodeURIComponent(command)));
+
+            if (command.startsWith("to ")) {
+                window.location.href = command.replace("to ", "") + ".html";
+            } else
+                send(encodeURI(encodeURIComponent(command)));
 
             resetInput();
         }
