@@ -157,7 +157,7 @@
     </header>
     <div id="preview-page" class="preview-page">
 
-        <div style="float:left">
+        <div class="adcontainer sidebar-container" style="float:left;padding-left: 25px">
             <script type="text/javascript">
                 ( function () {
                     if (window.CHITIKA === undefined) {
@@ -177,6 +177,15 @@
                 }());
             </script>
             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+            <!-- Featured Tags -->
+            <section>
+                <hr class="hidden-sm hidden-xs">
+                <h5><a href="">FEATURED TAGS</a></h5>
+                <div class="tags">
+
+
+                </div>
+            </section>
         </div>
 
         <div role="main" class="main-content" style="float:left">
@@ -199,17 +208,26 @@
                 col-xs-12
                 sidebar-container
             ">
+            <script type="text/javascript">
+                ( function () {
+                    if (window.CHITIKA === undefined) {
+                        window.CHITIKA = {'units': []};
+                    }
+                    ;
+                    var unit = {
+                        "calltype": "async[2]",
+                        "publisher": "suntabu",
+                        "width": 300,
+                        "height": 250,
+                        "sid": "Chitika Default"
+                    };
+                    var placement_id = window.CHITIKA.units.length;
+                    window.CHITIKA.units.push(unit);
+                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                }());
+            </script>
+            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
-
-            <!-- Featured Tags -->
-            <section>
-                <hr class="hidden-sm hidden-xs">
-                <h5><a href="">FEATURED TAGS</a></h5>
-                <div class="tags">
-
-
-                </div>
-            </section>
 
             <!-- Short About -->
             <section class="visible-md visible-lg">
@@ -251,25 +269,6 @@
                 </div>
             </section>
 
-            <script type="text/javascript">
-                ( function () {
-                    if (window.CHITIKA === undefined) {
-                        window.CHITIKA = {'units': []};
-                    }
-                    ;
-                    var unit = {
-                        "calltype": "async[2]",
-                        "publisher": "suntabu",
-                        "width": 300,
-                        "height": 250,
-                        "sid": "Chitika Default"
-                    };
-                    var placement_id = window.CHITIKA.units.length;
-                    window.CHITIKA.units.push(unit);
-                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                }());
-            </script>
-            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
             <hr>
         </div>
