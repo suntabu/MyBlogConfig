@@ -86,20 +86,6 @@
             }
         });
 
-        $.get("api/taglist", function (data, status) {
-            try {
-                for (var i = 0; i < data.length; i++) {
-                    var md = data[i];
-                    var html = "<a href=\"/taglist.html?t=" + md + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
-
-                    $(".tags").prepend(html);
-
-                }
-
-            } catch (e) {
-                alert(e.message + "\n" + data);
-            }
-        });
 
         (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-3664289447537902",
@@ -159,33 +145,33 @@
     // Drop Bootstarp low-performance Navbar
     // Use customize navbar with high-quality material design animation
     // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
+    var $body = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
 
     var __HuxNav__ = {
-        close: function(){
+        close: function () {
             $navbar.className = " ";
             // wait until animation end.
-            setTimeout(function(){
+            setTimeout(function () {
                 // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
+                if ($navbar.className.indexOf('in') < 0) {
                     $collapse.style.height = "0px"
                 }
-            },400)
+            }, 400)
         },
-        open: function(){
+        open: function () {
             $collapse.style.height = "auto"
             $navbar.className += " in";
         }
     }
 
     // Bind Event
-    $toggle.addEventListener('click', function(e){
+    $toggle.addEventListener('click', function (e) {
         if ($navbar.className.indexOf('in') > 0) {
             __HuxNav__.close()
-        }else{
+        } else {
             __HuxNav__.open()
         }
     })
@@ -201,9 +187,9 @@
      *
      * Also, we use 'click' instead of 'touchstart' as compromise
      */
-    document.addEventListener('click', function(e){
-        if(e.target == $toggle) return;
-        if(e.target.className == 'icon-bar') return;
+    document.addEventListener('click', function (e) {
+        if (e.target == $toggle) return;
+        if (e.target.className == 'icon-bar') return;
         __HuxNav__.close();
     })
 </script>
@@ -221,11 +207,55 @@
             </div>
         </div>
     </header>
+    <div class="adcontainer sidebar-container" style="float:left">
+        <script type="text/javascript">
+            ( function () {
+                if (window.CHITIKA === undefined) {
+                    window.CHITIKA = {'units': []};
+                }
+                ;
+                var unit = {
+                    "calltype": "async[2]",
+                    "publisher": "suntabu",
+                    "width": 300,
+                    "height": 250,
+                    "sid": "Chitika Default"
+                };
+                var placement_id = window.CHITIKA.units.length;
+                window.CHITIKA.units.push(unit);
+                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+            }());
+        </script>
+        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
+        <!-- Featured Tags -->
+        <section>
+            <hr class="hidden-sm hidden-xs">
+            <h5><a href="">FEATURED TAGS</a></h5>
+            <div class="tags" id="mytags">
+
+                <script type="text/javascript" async>
+                    $.get("api/taglist", function (data, status) {
+                        try {
+                            for (var i = 0; i < data.length; i++) {
+                                var md = data[i];
+                                var html = "<a href=\"/taglist.html?t=" + md + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+
+                                $("#mytags").prepend(html);
+
+                            }
+
+                        } catch (e) {
+                            alert(e.message + "\n" + data);
+                        }
+                    });
+                </script>
+            </div>
+        </section>
+    </div>
     <div class="container">
+
         <div class="row">
-
-
             <!-- USE SIDEBAR -->
             <!-- Post Container -->
             <div class="
@@ -235,7 +265,6 @@
                 col-xs-12
                 post-container
             ">
-
 
                 <!-- Pager -->
 
@@ -260,27 +289,35 @@
                 col-xs-12
                 sidebar-container
             ">
+                <script type="text/javascript">
+                    ( function () {
+                        if (window.CHITIKA === undefined) {
+                            window.CHITIKA = {'units': []};
+                        }
+                        ;
+                        var unit = {
+                            "calltype": "async[2]",
+                            "publisher": "suntabu",
+                            "width": 300,
+                            "height": 250,
+                            "sid": "Chitika Default"
+                        };
+                        var placement_id = window.CHITIKA.units.length;
+                        window.CHITIKA.units.push(unit);
+                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                    }());
+                </script>
+                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
 
-                <!-- Featured Tags -->
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="">FEATURED TAGS</a></h5>
-                    <div class="tags">
+                <!--<section>-->
+                <!--<hr class="hidden-sm hidden-xs">-->
+                <!--<h5><a href="">FOOT PRINTS</a></h5>-->
 
+                <!--<script type="text/javascript" id="clstr_globe"-->
+                <!--src="//cdn.clustrmaps.com/globe.js?d=38r01flTtjF-iBe_Kt5HudHHNUiNKNL6o5qh1qS0zP8"></script>-->
 
-                    </div>
-                </section>
-
-
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="">FOOT PRINTS</a></h5>
-
-                    <script type="text/javascript" id="clstr_globe"
-                            src="//cdn.clustrmaps.com/globe.js?d=38r01flTtjF-iBe_Kt5HudHHNUiNKNL6o5qh1qS0zP8"></script>
-
-                </section>
+                <!--</section>-->
 
 
                 <!-- Short About -->
@@ -323,25 +360,6 @@
                     </div>
                 </section>
 
-                <script type="text/javascript">
-                    ( function () {
-                        if (window.CHITIKA === undefined) {
-                            window.CHITIKA = {'units': []};
-                        }
-                        ;
-                        var unit = {
-                            "calltype": "async[2]",
-                            "publisher": "suntabu",
-                            "width": 300,
-                            "height": 250,
-                            "sid": "Chitika Default"
-                        };
-                        var placement_id = window.CHITIKA.units.length;
-                        window.CHITIKA.units.push(unit);
-                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                    }());
-                </script>
-                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
                 <hr>
             </div>
@@ -425,7 +443,6 @@
     })
 </script>
 
-<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
 <!--<script src="//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>-->
 
