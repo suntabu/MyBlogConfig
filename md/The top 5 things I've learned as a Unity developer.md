@@ -1,4 +1,3 @@
-## [The top 5 things I've learned as a Unity developer](http://www.gamasutra.com/blogs/JohnWarner/20130910/194559/The_top_5_things_Ive_learned_as_a_Unity_developer.php)
 
 
 Unity is a fantastic game development platform for many reasons, one of which being the clean, accessible way its component-oriented platform is designed.  For example, it's very easy to slam together some code and have a simple working prototype running in a day or two. Despite its versatility however, I've found over the years that there's a few practices that work particularly well with Unity. 

@@ -1,4 +1,4 @@
-# C# Memory Managment for Unity Developers(part 1 of 3)
+# (part 1 of 3)
 
 _**The following blog post, unless otherwise noted, was written by a member of Gamasutra’s community.
 The thoughts and opinions expressed are those of the writer and not Gamasutra or its parent company.**_

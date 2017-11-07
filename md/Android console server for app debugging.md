@@ -1,5 +1,4 @@
 
-# Android console server for app debugging
 
 #### When No usb cabble connecting to your android phone,but you need to check your app's log information. 
 

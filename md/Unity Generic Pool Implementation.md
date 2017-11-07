@@ -1,4 +1,3 @@
-### [Unity Generic Pool Implementation](http://pastebin.com/he1fYC29)
 
 ``` C#
 using System;

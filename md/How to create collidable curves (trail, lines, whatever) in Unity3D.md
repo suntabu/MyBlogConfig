@@ -1,4 +1,3 @@
-### [How to create collidable curves (trail, lines, whatever) in Unity3D](http://blog.playmedusa.com/how-to-create-collidable-curves-trail-lines-whatever-in-unity3d/)
 
 A few weeks before Halloween we decided to create a minigame to polish and learn new tricks (and treats, ha!). With not much time left for the game, we came up with simple mechanics: pumpkins fall from the top of the screen and must land safely. If pumpkins fall too fast they break and don’t score. By drawing a line (which would look like a spiderweb), players guide healthy pumpkins gently to the ground while throwing rotten pumpkins away.  Both actions score points. The goal consists just on getting as many points as posible in 64 seconds. We called it Halloweee! and it finally looked like you see on the image (you may try it on Android, it’s free)
 

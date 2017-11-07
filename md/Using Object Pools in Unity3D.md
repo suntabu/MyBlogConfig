@@ -1,4 +1,3 @@
-### [Using Object Pools in Unity3D:Why and How.](http://freakycreations.net/using-object-pools-in-unity3d-why-and-how-kind-of/)
 
 So, if you are a game programmer and don’t want to share that fate, please read on, as I will share some thoughts about why you should use this and then the design and implementation of our own Object Pool class, that, while not perfect, it has helped us greatly to optimize our game.
 

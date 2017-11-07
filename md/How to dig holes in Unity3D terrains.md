@@ -1,4 +1,3 @@
-## [How to dig holes in Unity3D terrains.](http://www.blog.radiator.debacle.us/2012/08/how-to-dig-holes-in-unity3d-terrains.html)
 
 
 Say you're making a Unity game that takes place in a large landscape dotted with windmills, and some of these windmills have tunnels that lead underground. But in Unity, the terrain collider is generated from heightmap data: it's essentially one giant bumpy plane. You can't punch holes in it.

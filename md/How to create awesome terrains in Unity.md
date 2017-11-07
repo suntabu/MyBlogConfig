@@ -1,4 +1,3 @@
-## [How to create awesome terrains in Unity](http://www.bitsalive.com/how-to-create-awesome-terrains-in-unity/)
 
 
 Today we wanna give a short insight on how we create terrains for planet surfaces. Though Unity has some terrain shaping tools, they are somewhat limited.

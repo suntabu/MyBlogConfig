@@ -1,6 +1,5 @@
 
 
-# Performance tips for Unity 2d mobile
 
 
 #### At the minute I'm looking into performance with our latest game (which I'll write about once it's out on iOS), so I figured I'd gather together all the different tips that I ended up using to get our game running back up at 60fps.
