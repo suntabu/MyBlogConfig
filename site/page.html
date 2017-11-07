@@ -64,7 +64,7 @@
         }
 
         var n = GetQueryString("n");
-        document.title = decodeURIComponent(n);
+        document.title = decodeURIComponent(n) + ' - Suntabu Blog';
         console.log(n + "    ->\n" + encodeURIComponent(n))
         $.get("api/md?n=" + encodeURIComponent(n), function (data, status) {
             var ab = JSON.parse(data);
