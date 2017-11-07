@@ -1,25 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+    <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-<url>
-  <loc>http://suntabu.com/</loc>
-  <changefreq>daily</changefreq>
-</url>
-<url>
-  <loc>http://suntabu.com/taglist.html?t="%20+%20md.tag%20+%20"</loc>
-  <changefreq>daily</changefreq>
-</url>
-<url>
-  <loc>http://suntabu.com/about/</loc>
-  <changefreq>daily</changefreq>
-</url>
-<url>
-  <loc>http://suntabu.com/tags/</loc>
-  <changefreq>daily</changefreq>
-</url>
+    <url>
+        <loc>http://suntabu.com/</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>http://suntabu.com/taglist.html?t="%20+%20md.tag%20+%20"</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>http://suntabu.com/about/</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>http://suntabu.com/tags/</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>http://suntabu.com/page.html?n=How%20to%20write%20to%20NTFS%20disk%20on%20mac.md</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>http://www.suntabu.com/page.html?n=Android%20console%20server%20for%20app%20debugging.md</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>http://www.suntabu.com/page.html?n=Unity3d%20webtexture%20render%20shader.md</loc>
+        <changefreq>daily</changefreq>
+    </url>
+
 </urlset>
