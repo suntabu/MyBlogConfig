@@ -18,8 +18,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="About Unity3d, Android, Server, Html5 | gouzhun, suntabu, unity developer, geek | suntabu's blog ">
-    <meta name="keywords" content="Suntabu blog | Unity Developing | C# | Android | Game Developing | gouzhun | zhun gou blog">
+    <meta name="description"
+          content="About Unity3d, Android, Server, Html5 | gouzhun, suntabu, unity developer, geek | suntabu's blog ">
+    <meta name="keywords"
+          content="Suntabu blog | Unity Developing | C# | Android | Game Developing | gouzhun | zhun gou blog">
     <meta name="theme-color" content="#000000">
     <title>Suntabu Blog</title>
 
@@ -63,26 +65,32 @@
 
         $.get("api/list?p=" + p, function (data, status) {
             try {
-                data = data.reverse()
-                for (var i = 0; i < data.length; i++) {
-                    var md = data[i];
-                    var html = "<div class=\"post-preview \">" +
-                        "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
-                        "<h2 class=\"post-title\">" + md.title + "</h2>" +
-                        "<a class='ptags' href='/taglist.html?t=" + md.tag + "'>" + md.tag + "</a>" +
-                        "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
-                        "<br/>" +
-                        "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
-
-                    $(".post-container").prepend(html);
-
-                    if (p <= 0) {
-                        $("#p_p").hide();
-                    }
-
-                    $("#n_p").attr("href", "/index.html?p=" + (Number(p) + 1));
+                if (data.length <= 0) {
+                    $(".post-container").prepend("No more articles!");
+                    $("#n_p").attr("href", "/index.html?p=0");
                     $("#p_p").attr("href", "/index.html?p=" + (p - 1));
+                } else {
+                    data = data.reverse()
+                    for (var i = 0; i < data.length; i++) {
+                        var md = data[i];
+                        var html = "<div class=\"post-preview \">" +
+                            "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
+                            "<h2 class=\"post-title\">" + md.title + "</h2>" +
+                            "<a class='ptags' href='/taglist.html?t=" + md.tag + "'>" + md.tag + "</a>" +
+                            "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
+                            "<br/>" +
+                            "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
 
+                        $(".post-container").prepend(html);
+
+                        if (p <= 0) {
+                            $("#p_p").hide();
+                        }
+
+                        $("#n_p").attr("href", "/index.html?p=" + (Number(p) + 1));
+                        $("#p_p").attr("href", "/index.html?p=" + (p - 1));
+
+                    }
                 }
 
             } catch (e) {

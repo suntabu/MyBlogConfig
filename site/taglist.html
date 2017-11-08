@@ -51,35 +51,43 @@
             return 0;
         }
 
-        var p = GetQueryString("t");
+        var t = GetQueryString("t");
+        var p = GetQueryString("p");
+        $.get("api/taglist?t=" + t + "&p=" + p, function (data, status) {
+                try {
+                    if (data.length <= 0) {
+                        $(".post-container").prepend("No more articles!");
+                        $("#n_p").attr("href", "taglist.html?t=" + t + "&p=0");
+                        $("#p_p").attr("href", "taglist.html?t=" + t + "&p=" + (p - 1));
+                    } else {
+                        data = data.reverse();
+                        for (var i = 0; i < data.length; i++) {
+                            var md = data[i];
+                            var html = "<div class=\"post-preview\">" +
+                                "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
+                                "<h2 class=\"post-title\">" + md.title + "</h2>" +
+                                "<h3 class=\"post-subtitle\">" + md.tag + "</h3>" +
+                                "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
+                                "<br/>" +
+                                "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
 
-        $.get("api/taglist?t=" + p, function (data, status) {
-            try {
-                for (var i = 0; i < data.length; i++) {
-                    var md = data[i];
-                    var html = "<div class=\"post-preview\">" +
-                        "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
-                        "<h2 class=\"post-title\">" + md.title + "</h2>" +
-                        "<h3 class=\"post-subtitle\">" + md.tag + "</h3>" +
-                        "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
-                        "<br/>" +
-                        "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
+                            $(".post-container").prepend(html);
 
-                    $(".post-container").prepend(html);
+                            if (p <= 0) {
+                                $("#p_p").hide();
+                            }
 
-                    if (p <= 0) {
-                        $("#p_p").hide();
+                            $("#n_p").attr("href", "taglist.html?t=" + t + "&p=" + (Number(p) + 1));
+                            $("#p_p").attr("href", "taglist.html?t=" + t + "&p=" + (p - 1));
+                        }
                     }
-
-                    $("#n_p").attr("href", "/index.html?p=" + (Number(p) + 1));
-                    $("#p_p").attr("href", "/index.html?p=" + (p - 1));
-
                 }
-
-            } catch (e) {
-                alert(e.message + "\n" + data);
+                catch
+                    (e) {
+                    alert(e.message + "\n" + data);
+                }
             }
-        });
+        );
 
         $.get("api/taglist", function (data, status) {
             try {
@@ -97,7 +105,7 @@
         });
 
         $(document).ready(function () {
-            $("h1").html("TAG - " + p);
+            $("h1").html("TAG - " + t);
 
 
         });
