@@ -34,7 +34,7 @@
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/assets/syntax.css">
-
+    <link rel="stylesheet" href="/assets/suntabu-blog.css">
     <!-- Custom Fonts -->
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
@@ -154,7 +154,52 @@
         </div>
     </div>
 </header>
+<div class="adcontainer sidebar-container" style="float:left">
+    <script type="text/javascript">
+        ( function () {
+            if (window.CHITIKA === undefined) {
+                window.CHITIKA = {'units': []};
+            }
+            ;
+            var unit = {
+                "calltype": "async[2]",
+                "publisher": "suntabu",
+                "width": 300,
+                "height": 250,
+                "sid": "Chitika Default"
+            };
+            var placement_id = window.CHITIKA.units.length;
+            window.CHITIKA.units.push(unit);
+            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+        }());
+    </script>
+    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
+    <!-- Featured Tags -->
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5><a href="">FEATURED TAGS</a></h5>
+        <div class="tags" id="mytags">
+
+            <script type="text/javascript" async>
+                $.get("api/taglist", function (data, status) {
+                    try {
+                        for (var i = 0; i < data.length; i++) {
+                            var md = data[i];
+                            var html = "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+
+                            $("#mytags").prepend(html);
+
+                        }
+
+                    } catch (e) {
+                        alert(e.message + "\n" + data);
+                    }
+                });
+            </script>
+        </div>
+    </section>
+</div>
 <!-- Main Content -->
 <div class="container">
     <div class="row">
@@ -204,9 +249,6 @@
             </script>
 
 
-
-
-
         </div>
         <!-- Sidebar Container -->
         <div class="
@@ -216,17 +258,26 @@
                 col-xs-12
                 sidebar-container
             ">
-            <!-- Featured Tags -->
 
-            <section>
-                <hr class="hidden-sm hidden-xs">
-                <h5><a href="">FEATURED TAGS</a></h5>
-                <div class="tags">
-
-
-                </div>
-            </section>
-
+            <script type="text/javascript">
+                ( function () {
+                    if (window.CHITIKA === undefined) {
+                        window.CHITIKA = {'units': []};
+                    }
+                    ;
+                    var unit = {
+                        "calltype": "async[2]",
+                        "publisher": "suntabu",
+                        "width": 300,
+                        "height": 250,
+                        "sid": "Chitika Default"
+                    };
+                    var placement_id = window.CHITIKA.units.length;
+                    window.CHITIKA.units.push(unit);
+                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                }());
+            </script>
+            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
             <!-- Short About -->
             <section class="visible-md visible-lg">
@@ -268,25 +319,6 @@
                 </div>
             </section>
 
-            <script type="text/javascript">
-                ( function () {
-                    if (window.CHITIKA === undefined) {
-                        window.CHITIKA = {'units': []};
-                    }
-                    ;
-                    var unit = {
-                        "calltype": "async[2]",
-                        "publisher": "suntabu",
-                        "width": 300,
-                        "height": 250,
-                        "sid": "Chitika Default"
-                    };
-                    var placement_id = window.CHITIKA.units.length;
-                    window.CHITIKA.units.push(unit);
-                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                }());
-            </script>
-            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
             <hr>
 
