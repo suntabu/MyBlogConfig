@@ -78,7 +78,7 @@
                             taghtml += "<a class='ptags' href='/taglist.html?t=" + encodeURIComponent(md.tag[j]) + "'>" + md.tag[j] + "</a>";
                         }
 
-
+                        console.log(encodeURIComponent(md.title) + ".md")
                         var html = "<div class=\"post-preview \">" +
                             "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
                             "<h2 class=\"post-title\">" + md.title + "</h2>" +
