@@ -79,7 +79,7 @@
             try {
                 for (var i = 0; i < data.length; i++) {
                     var md = data[i];
-                    var html = "<a href=\"/taglist.html?t=" + md + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+                    var html = "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
 
                     $(".tags").prepend(html);
 

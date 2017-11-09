@@ -15,12 +15,13 @@
         gtag('config', 'UA-109264420-1');
     </script>
     <meta charset="utf-8"/>
-    <title>Suntabu</title>
+    <title>Suntabu - tag list</title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="/assets/bootstrap.min.css"/>
     <link rel="stylesheet" href="/assets/hux-blog.min.css"/>
     <link rel="stylesheet" href="/assets/syntax.css"/>
+    <link rel="stylesheet" href="/assets/suntabu-blog.css"/>
     <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <style>
         /* Page tweaks */
@@ -53,20 +54,26 @@
 
         var t = GetQueryString("t");
         var p = GetQueryString("p");
-        $.get("api/taglist?t=" + t + "&p=" + p, function (data, status) {
+        $.get("api/taglist?t=" + encodeURIComponent(t) + "&p=" + p, function (data, status) {
                 try {
                     if (data.length <= 0) {
                         $(".post-container").prepend("No more articles!");
-                        $("#n_p").attr("href", "taglist.html?t=" + t + "&p=0");
-                        $("#p_p").attr("href", "taglist.html?t=" + t + "&p=" + (p - 1));
+                        $("#n_p").attr("href", "taglist.html?t=" + encodeURIComponent(t) + "&p=0");
+                        $("#p_p").attr("href", "taglist.html?t=" + encodeURIComponent(t) + "&p=" + (p - 1));
                     } else {
-                        data = data.reverse();
+                        data = data.reverse()
                         for (var i = 0; i < data.length; i++) {
                             var md = data[i];
-                            var html = "<div class=\"post-preview\">" +
+                            var taghtml = "";
+                            for (var j = 0; j < md.tag.length; j++) {
+                                taghtml += "<a class='ptags' href='/taglist.html?t=" + encodeURIComponent(md.tag[j]) + "'>" + md.tag[j] + "</a>";
+                            }
+
+
+                            var html = "<div class=\"post-preview \">" +
                                 "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
                                 "<h2 class=\"post-title\">" + md.title + "</h2>" +
-                                "<h3 class=\"post-subtitle\">" + md.tag + "</h3>" +
+                                taghtml +
                                 "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
                                 "<br/>" +
                                 "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
@@ -77,8 +84,9 @@
                                 $("#p_p").hide();
                             }
 
-                            $("#n_p").attr("href", "taglist.html?t=" + t + "&p=" + (Number(p) + 1));
-                            $("#p_p").attr("href", "taglist.html?t=" + t + "&p=" + (p - 1));
+                            $("#n_p").attr("href", "taglist.html?t=" + encodeURIComponent(t) + "&p=" + (Number(p) + 1));
+                            $("#p_p").attr("href", "taglist.html?t=" + encodeURIComponent(t) + "&p=" + (p - 1));
+
                         }
                     }
                 }
@@ -89,25 +97,9 @@
             }
         );
 
-        $.get("api/taglist", function (data, status) {
-            try {
-                for (var i = 0; i < data.length; i++) {
-                    var md = data[i];
-                    var html = "<a href=\"/taglist.html?t=" + md + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
-
-                    $(".tags").prepend(html);
-
-                }
-
-            } catch (e) {
-                alert(e.message + "\n" + data);
-            }
-        });
 
         $(document).ready(function () {
             $("h1").html("TAG - " + t);
-
-
         });
 
         (adsbygoogle = window.adsbygoogle || []).push({
@@ -178,7 +170,52 @@
             </div>
         </div>
     </header>
+    <div class="adcontainer sidebar-container" style="float:left">
+        <script type="text/javascript">
+            ( function () {
+                if (window.CHITIKA === undefined) {
+                    window.CHITIKA = {'units': []};
+                }
+                ;
+                var unit = {
+                    "calltype": "async[2]",
+                    "publisher": "suntabu",
+                    "width": 300,
+                    "height": 250,
+                    "sid": "Chitika Default"
+                };
+                var placement_id = window.CHITIKA.units.length;
+                window.CHITIKA.units.push(unit);
+                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+            }());
+        </script>
+        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
+        <!-- Featured Tags -->
+        <section>
+            <hr class="hidden-sm hidden-xs">
+            <h5><a href="">FEATURED TAGS</a></h5>
+            <div class="tags" id="mytags">
+
+                <script type="text/javascript" async>
+                    $.get("api/taglist", function (data, status) {
+                        try {
+                            for (var i = 0; i < data.length; i++) {
+                                var md = data[i];
+                                var html = "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+
+                                $("#mytags").prepend(html);
+
+                            }
+
+                        } catch (e) {
+                            alert(e.message + "\n" + data);
+                        }
+                    });
+                </script>
+            </div>
+        </section>
+    </div>
     <div class="container">
         <div class="row">
 
@@ -217,17 +254,26 @@
                 col-xs-12
                 sidebar-container
             ">
+                <script type="text/javascript">
+                    ( function () {
+                        if (window.CHITIKA === undefined) {
+                            window.CHITIKA = {'units': []};
+                        }
+                        ;
+                        var unit = {
+                            "calltype": "async[2]",
+                            "publisher": "suntabu",
+                            "width": 300,
+                            "height": 250,
+                            "sid": "Chitika Default"
+                        };
+                        var placement_id = window.CHITIKA.units.length;
+                        window.CHITIKA.units.push(unit);
+                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                    }());
+                </script>
+                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 
-
-                <!-- Featured Tags -->
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="">FEATURED TAGS</a></h5>
-                    <div class="tags">
-
-
-                    </div>
-                </section>
 
                 <!--                 <section>
                                     <hr class="hidden-sm hidden-xs">
