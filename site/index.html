@@ -70,33 +70,13 @@
                     $("#n_p").attr("href", "/index.html?p=0");
                     $("#p_p").attr("href", "/index.html?p=" + (p - 1));
                 } else {
-                    data = data.reverse()
-                    for (var i = 0; i < data.length; i++) {
-                        var md = data[i];
-                        var taghtml = "";
-                        for (var j = 0; j < md.tag.length; j++) {
-                            taghtml += "<a class='ptags' href='/taglist.html?t=" + encodeURIComponent(md.tag[j]) + "'>" + md.tag[j] + "</a>";
-                        }
+                    $(".post-container").prepend(data);
 
-                        console.log(encodeURIComponent(md.title) + ".md")
-                        var html = "<div class=\"post-preview \">" +
-                            "<a href=\"/page.html?n=" + encodeURIComponent(md.title) + ".md\">" +
-                            "<h2 class=\"post-title\">" + md.title + "</h2>" +
-                            taghtml +
-                            "<div class=\"post-content-preview\">" + md.desc + "</div></a>" +
-                            "<br/>" +
-                            "<p class=\"post-meta\"> Posted by " + md.author + " on " + new Date(md.date).toDateString() + "</p> </div>"
-
-                        $(".post-container").prepend(html);
-
-                        if (p <= 0) {
-                            $("#p_p").hide();
-                        }
-
-                        $("#n_p").attr("href", "/index.html?p=" + (Number(p) + 1));
-                        $("#p_p").attr("href", "/index.html?p=" + (p - 1));
-
+                    if (p <= 0) {
+                        $("#p_p").hide();
                     }
+                    $("#n_p").attr("href", "/index.html?p=" + (Number(p) + 1));
+                    $("#p_p").attr("href", "/index.html?p=" + (p - 1));
                 }
 
             } catch (e) {
@@ -253,18 +233,7 @@
 
                 <script type="text/javascript" async>
                     $.get("api/taglist", function (data, status) {
-                        try {
-                            for (var i = 0; i < data.length; i++) {
-                                var md = data[i];
-                                var html = "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
-
-                                $("#mytags").prepend(html);
-
-                            }
-
-                        } catch (e) {
-                            alert(e.message + "\n" + data);
-                        }
+                        $("#mytags").prepend(data);
                     });
                 </script>
             </div>
