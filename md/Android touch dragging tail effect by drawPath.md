@@ -10,8 +10,5 @@ Let's get over the code:
 
 2. Then use the instance of PathTailHelper in any view class which would be drawn with the tail. In my project it was [**PathTailView.java**](https://github.com/suntabu/AndroidPathTail/blob/master/app/src/main/java/com/suntabu/pathtail/PathTailView.java)
 
-``` java
 
-
-```
 
