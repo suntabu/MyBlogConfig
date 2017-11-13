@@ -18,8 +18,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="About Unity3d, Android, Server, Html5 | gouzhun, suntabu, unity developer, geek | suntabu's blog ">
-    <meta name="keywords" content="Suntabu blog | Unity Developing | C# | Android | Game Developing | gouzhun | zhun gou blog">
+    <meta name="description"
+          content="About Unity3d, Android, Server, Html5 | gouzhun, suntabu, unity developer, geek | suntabu's blog ">
+    <meta name="keywords"
+          content="Suntabu blog | Unity Developing | C# | Android | Game Developing | gouzhun | zhun gou blog">
     <meta name="theme-color" content="#000000">
     <title>Suntabu Blog</title>
 
@@ -69,8 +71,14 @@
         $.get("api/md?n=" + encodeURIComponent(n), function (data, status) {
             var ab = JSON.parse(data);
             $("#article-title").html(ab.title);
-            $("#article-tag").html(ab.tag);
-            $("#article-tag").href = "/tags/" + ab.tag;
+            var taghtml = "";
+            for (var i = 0; i < ab.tag.length; i++) {
+                var md = ab.tag[i];
+                taghtml += "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+            }
+            $("#abtag").prepend(taghtml);
+
+
             $("#article-meta").html("Posted by Suntabu on " + new Date(ab.date).toDateString());
             $(".markdown-body").html(ab.htmlStr);
         });
@@ -143,8 +151,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <div class="tags">
-                            <a class="tag" id="article-tag"></a>
+                        <div class="tags" id="abtag">
                         </div>
                         <h1 id="article-title"></h1>
                         <span id="article-meta" class="meta"></span>
@@ -179,7 +186,7 @@
             <section>
                 <hr class="hidden-sm hidden-xs">
                 <h5><a href="">FEATURED TAGS</a></h5>
-                <div class="tags">
+                <div class="tags" id="mytags">
 
 
                 </div>
