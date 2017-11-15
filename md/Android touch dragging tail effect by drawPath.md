@@ -1,6 +1,6 @@
 
 
-##### Recently I worked on an android keyboard app, encountered the need of gesture typing path drawing effect. Normalizely, by using drawing path of the records of ontouchevent postion would be ok, but we could do it better like below:
+**Recently I worked on an android keyboard app, encountered the need of gesture typing path drawing effect. Normalizely, by using drawing path of the records of ontouchevent postion would be ok, but we could do it better like below:**
 
 [![](https://raw.githubusercontent.com/suntabu/AndroidPathTail/master/android_path_tail.gif)](https://www.youtube.com/watch?v=wB3i_P31Sek)
 
