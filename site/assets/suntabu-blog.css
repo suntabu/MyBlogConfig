@@ -42,7 +42,7 @@ body {
 .post-preview {
     background-color:#fff !important;
     padding: 1em 2em;
-    border-radius: 0.6em;
-    box-shadow: 10px 10px 5px #ccc;
+    border-radius: 0.2em;
+    box-shadow: 2px 2px 1px #ccc;
 }
 
