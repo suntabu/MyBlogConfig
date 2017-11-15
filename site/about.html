@@ -156,19 +156,7 @@
 </header>
 <div class="adcontainer sidebar-container" style="float:left">
 
-    <!-- Featured Tags -->
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5><a href="">FEATURED TAGS</a></h5>
-        <div class="tags" id="mytags">
 
-            <script type="text/javascript" async>
-                $.get("api/taglist", function (data, status) {
-                    $("#mytags").prepend(data);
-                });
-            </script>
-        </div>
-    </section>
 </div>
 <!-- Main Content -->
 <div class="container">
@@ -182,7 +170,7 @@
                 col-md-8 col-md-offset-1
                 col-sm-12
                 col-xs-12
-                post-container
+                post-container white-quad
             ">
             <!-- Language Selector -->
             <select onchange="onLanChange(this.options[this.options.selectedIndex].value)">
@@ -229,11 +217,23 @@
                 sidebar-container
             ">
 
+            <!-- Featured Tags -->
+            <section class=" white-quad">
+                <h5><a href="">FEATURED TAGS</a></h5>
+                <div class="tags" id="mytags">
 
+                    <script type="text/javascript" async>
+                        $.get("api/taglist", function (data, status) {
+                            $("#mytags").prepend(data);
+                        });
+                    </script>
+                </div>
+            </section>
+
+            <br/>
 
             <!-- Short About -->
-            <section class="visible-md visible-lg">
-                <hr>
+            <section class="visible-md visible-lg white-quad">
                 <h5><a href="">ABOUT ME</a></h5>
                 <div class="short-about">
 
@@ -244,7 +244,7 @@
                         slowly drifting away, Forming into my... Dreamtale
                     </p>
 
-
+                    <br/>
                     <!-- SNS Link -->
                     <ul class=" list-inline">
 

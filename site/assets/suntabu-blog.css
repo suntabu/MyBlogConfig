@@ -36,13 +36,19 @@
 }
 
 body {
-    background-color:#e4e4e4 !important; 
+    background-color: #e4e4e4 !important;
 }
 
 .post-preview {
-    background-color:#fff !important;
+    background-color: #fff !important;
     padding: 1em 2em;
     border-radius: 0.2em;
     box-shadow: 2px 2px 1px #ccc;
 }
 
+.white-quad {
+    background-color: #fff !important;
+    padding: 1em 2em;
+    border-radius: 0.2em;
+    box-shadow: 2px 2px 1px #ccc;
+}

@@ -207,19 +207,7 @@
     <div class="adcontainer sidebar-container" style="float:left">
 
 
-        <!-- Featured Tags -->
-        <section>
-            <hr class="hidden-sm hidden-xs">
-            <h5><a href="">FEATURED TAGS</a></h5>
-            <div class="tags" id="mytags">
 
-                <script type="text/javascript" async>
-                    $.get("api/taglist", function (data, status) {
-                        $("#mytags").prepend(data);
-                    });
-                </script>
-            </div>
-        </section>
     </div>
     <div class="container">
 
@@ -233,7 +221,16 @@
                 col-xs-12
                 post-container
             ">
-
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="fluid"
+                     data-ad-layout-key="-8d+29-ff+cn+o3"
+                     data-ad-client="ca-pub-3664289447537902"
+                     data-ad-slot="7839309927"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
                 <!-- Pager -->
 
                 <ul class="pager">
@@ -258,21 +255,22 @@
                 sidebar-container
             ">
 
+                <!-- Featured Tags -->
+                <section class="white-quad">
+                    <h5><a href="">FEATURED TAGS</a></h5>
+                    <div class="tags" id="mytags">
 
-
-                <!--<section>-->
-                <!--<hr class="hidden-sm hidden-xs">-->
-                <!--<h5><a href="">FOOT PRINTS</a></h5>-->
-
-                <!--<script type="text/javascript" id="clstr_globe"-->
-                <!--src="//cdn.clustrmaps.com/globe.js?d=38r01flTtjF-iBe_Kt5HudHHNUiNKNL6o5qh1qS0zP8"></script>-->
-
-                <!--</section>-->
-
-
+                        <script type="text/javascript" async>
+                            $.get("api/taglist", function (data, status) {
+                                $("#mytags").prepend(data);
+                            });
+                        </script>
+                    </div>
+                </section>
+                <br/>
                 <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr>
+                <section class="visible-md visible-lg white-quad">
+
                     <h5><a href="">ABOUT ME</a></h5>
                     <div class="short-about">
 
@@ -283,7 +281,7 @@
                             slowly drifting away, Forming into my... Dreamtale
                         </p>
 
-
+                        <hr>
                         <!-- SNS Link -->
                         <ul class=" list-inline">
 
