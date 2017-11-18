@@ -25,16 +25,14 @@
     <meta name="theme-color" content="#000000">
     <title>Suntabu Blog</title>
 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="/assets/bootstrap.min.css"/>
     <link rel="stylesheet" href="/assets/hux-blog.min.css"/>
     <link rel="stylesheet" href="/assets/syntax.css"/>
-    <link rel="stylesheet" href="/assets/frameworks-d7.css"/>
-    <link rel="stylesheet" href="/assets/github-9b.css"/>
-    <link rel="stylesheet" href="/assets/site-9b.css"/>
     <link rel="stylesheet" href="/assets/suntabu-blog.css"/>
     <link rel="stylesheet" href="/static/octicons/octicons.css"/>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <style>
@@ -80,11 +78,7 @@
 
 
             $("#article-meta").html("Posted by Suntabu on " + new Date(ab.date).toDateString());
-            $(".markdown-body").html(ab.htmlStr);
-        });
-
-        $.get("api/taglist", function (data, status) {
-            $("#mytags").prepend(data);
+            $("#contentpos").html(ab.htmlStr);
         });
 
 
@@ -144,6 +138,58 @@
     </div>
     <!-- /.container -->
 </nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function () {
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function () {
+                // prevent frequently toggle
+                if ($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            }, 400)
+        },
+        open: function () {
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function (e) {
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        } else {
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from
+     * $toggle/$collapse will break global delegation.
+     *
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function (e) {
+        if (e.target == $toggle) return;
+        if (e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
 <div class="page">
 
     <header class="intro-header" style="background-image: url('/img/home-bg1.jpg')">
@@ -160,96 +206,109 @@
             </div>
         </div>
     </header>
-    <div id="preview-page" class="preview-page">
+    <div class="adcontainer sidebar-container" style="float:left;padding-left: 25px">
 
-        <div class="adcontainer sidebar-container" style="float:left;padding-left: 25px">
 
-           
-        </div>
+    </div>
+    <div id="preview-page" class="container">
 
-        <div role="main" class="main-content" >
-            <div class="container new-discussion-timeline experiment-repo-nav">
-                <div class="row"> 
-                  <div id="readme" class="readme boxed-group clearfix announce instapaper_body md 
+        <div class="row">
+            <!-- USE SIDEBAR -->
+            <!-- Post Container -->
+            <div class="
                 col-lg-8 col-lg-offset-1
                 col-md-8 col-md-offset-1
                 col-sm-12
-                col-xs-12 post-container
+                col-xs-12
+                post-container
             ">
-                    <article class="markdown-body entry-content post-preview" itemprop="text" id="grip-content">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="fluid"
+                     data-ad-layout-key="-8d+29-ff+cn+o3"
+                     data-ad-client="ca-pub-3664289447537902"
+                     data-ad-slot="7839309927"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- Pager -->
+                <div class="white-quad" id="contentpos">
 
-                    </article>
 
                 </div>
-                    
-                     <div class="
+
+
+
+            </div>
+            <!-- Sidebar Container -->
+            <div class="
                 col-lg-3 col-lg-offset-0
                 col-md-3 col-md-offset-0
                 col-sm-12
                 col-xs-12
                 sidebar-container
             ">
-            <!-- Featured Tags -->
-            <section class="white-quad">
-                <h5><a href="">FEATURED TAGS</a></h5>
-                <div class="tags" id="mytags">
 
+                <!-- Featured Tags -->
+                <section class="white-quad">
+                    <h5><a href="">FEATURED TAGS</a></h5>
+                    <div class="tags" id="mytags">
 
-                </div>
-            </section>
-            <br/>
-            <!-- Short About -->
-            <section class="visible-md visible-lg white-quad">
-                <h5><a href="">ABOUT ME</a></h5>
-                <div class="short-about">
+                        <script type="text/javascript" async>
+                            $.get("api/taglist", function (data, status) {
+                                $("#mytags").prepend(data);
+                            });
+                        </script>
+                    </div>
+                </section>
+                <br/>
+                <!-- Short About -->
+                <section class="visible-md visible-lg white-quad">
 
-                    <!--<img src="/img/paladin.jpg">-->
-                    <p class="highlight cm"
-                       style=" font-style: italic;    font-family: 'Lora', 'Times New Roman', serif;">
-                        As The last ship sailed towards the distant horizon, I sat there watching on a rock, My mind
-                        slowly drifting away, Forming into my... Dreamtale
-                    </p>
+                    <h5><a href="">ABOUT ME</a></h5>
+                    <div class="short-about">
 
-                <hr>
+                        <img src="/img/paladin.png">
+                        <p class="highlight cm"
+                           style=" font-style: italic;    font-family: 'Lora', 'Times New Roman', serif;">
+                            As The last ship sailed towards the distant horizon, I sat there watching on a rock, My mind
+                            slowly drifting away, Forming into my... Dreamtale
+                        </p>
 
-                    <!-- SNS Link -->
-                    <ul class=" list-inline">
+                        <hr>
+                        <!-- SNS Link -->
+                        <ul class=" list-inline">
 
-                        <!--
-                                                    <li>
-                                                        <a target="_blank" href="https://twitter.com/suntabu">
-                                                            <span class="fa-stack fa-lg">
-                                                                <i class="fa fa-circle fa-stack-2x"></i>
-                                                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                                            </span>
-                                                        </a>
-                                                    </li>-->
+                            <!--
+                                                        <li>
+                                                            <a target="_blank" href="https://twitter.com/suntabu">
+                                                                <span class="fa-stack fa-lg">
+                                                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                                                </span>
+                                                            </a>
+                                                        </li>-->
 
-                        <li>
-                            <a target="_blank" href="https://github.com/suntabu">
+                            <li>
+                                <a target="_blank" href="https://github.com/suntabu">
                                     <span class="fa-stack fa-lg">
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                     </span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
-                    </ul>
-                </div>
-            </section>
+                        </ul>
+                    </div>
+                </section>
 
 
-            <hr>
-        </div>
-                    
-                </div>
-               
-
+                <hr>
             </div>
 
         </div>
 
-       
     </div>
 
 </div>
