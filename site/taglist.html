@@ -57,11 +57,22 @@
         $.get("api/taglist?t=" + encodeURIComponent(t) + "&p=" + p, function (data, status) {
                 try {
                     if (data.length <= 0) {
-                        $(".post-container").prepend("No more articles!");
+                        $(".post-container").prepend("<h3 style=\"text-align: center\" class='white-quad'>No more articles!</h3>");
                         $("#n_p").attr("href", "taglist.html?t=" + encodeURIComponent(t) + "&p=0");
                         $("#p_p").attr("href", "taglist.html?t=" + encodeURIComponent(t) + "&p=" + (p - 1));
                     } else {
-                        $(".post-container").prepend(data);
+                        data += "<ul class=\"pager\">\n" +
+                            "                    <li class=\"previous\">\n" +
+                            "                        <a id=\"p_p\">← Newer Posts</a>\n" +
+                            "                    </li>\n" +
+                            "\n" +
+                            "                    <li class=\"next\">\n" +
+                            "                        <a id=\"n_p\">Older Posts →</a>\n" +
+                            "                    </li>\n" +
+                            "\n" +
+                            "                </ul>"
+
+                        $(".post-container").append(data);
 
                         if (p <= 0) {
                             $("#p_p").hide();
@@ -168,20 +179,22 @@
                 col-xs-12
                 post-container
             ">
-
-
+                <div>
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-8d+29-ff+cn+o3"
+                         data-ad-client="ca-pub-3664289447537902"
+                         data-ad-slot="7839309927"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <br/>
                 <!-- Pager -->
 
-                <ul class="pager">
-                    <li class="previous">
-                        <a id="p_p">← Newer Posts</a>
-                    </li>
 
-                    <li class="next">
-                        <a id="n_p">Older Posts →</a>
-                    </li>
-
-                </ul>
 
 
             </div>

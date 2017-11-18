@@ -66,7 +66,7 @@
         $.get("api/list?p=" + p, function (data, status) {
             try {
                 if (data.length <= 0) {
-                    $(".post-container").prepend("No more articles!");
+                    $(".post-container").prepend("<h3 style=\"text-align: center\" class='white-quad'>No more articles!</h3>");
                     $("#n_p").attr("href", "/index.html?p=0");
                     $("#p_p").attr("href", "/index.html?p=" + (p - 1));
                 } else {
