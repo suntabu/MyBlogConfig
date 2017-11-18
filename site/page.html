@@ -63,11 +63,14 @@
             return null;
         }
 
-        var n = GetQueryString("n");
-        document.title = decodeURIComponent(n) + ' - Suntabu Blog';
-        console.log(n + "    ->\n" + encodeURIComponent(n))
-        $.get("api/md?n=" + encodeURIComponent(n), function (data, status) {
+        var d = GetQueryString("d");
+
+        //        console.log(d + "    ->\n" + encodeURIComponent(d))
+        $.get("api/md?d=" + encodeURIComponent(d), function (data, status) {
+
             var ab = JSON.parse(data);
+            document.title = decodeURIComponent(ab.title) + ' - Suntabu Blog';
+
             $("#article-title").html(ab.title);
             var taghtml = "";
             for (var i = 0; i < ab.tag.length; i++) {
@@ -239,7 +242,6 @@
 
 
                 </div>
-
 
 
             </div>
