@@ -76,12 +76,23 @@
             for (var i = 0; i < ab.tag.length; i++) {
                 var md = ab.tag[i];
                 taghtml += "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+
+
             }
             $("#abtag").prepend(taghtml);
 
 
             $("#article-meta").html("Posted by Suntabu on " + new Date(ab.date).toDateString());
             $("#contentpos").html(ab.htmlStr);
+
+
+            if (ab.tag.length > 0) {
+                $.get("api/tagrelated?t=" + encodeURIComponent(ab.tag[0]), function (data, status) {
+                    $("#related").prepend(data);
+                });
+            }
+
+
         });
 
 
@@ -264,6 +275,13 @@
                                 $("#mytags").prepend(data);
                             });
                         </script>
+                    </div>
+                </section>
+                <br/>
+                <section class="white-quad">
+                    <h5><a href="">RELATED ARTICLE</a></h5>
+                    <div id="related">
+
                     </div>
                 </section>
                 <br/>
