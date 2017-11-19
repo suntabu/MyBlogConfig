@@ -18,13 +18,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-          content="About Unity3d, Android, Server, Html5 | gouzhun, suntabu, unity developer, geek | suntabu's blog ">
-    <meta name="keywords"
-          content="Suntabu blog | Unity Developing | C# | Android | Game Developing | gouzhun | zhun gou blog">
+
     <meta name="theme-color" content="#000000">
     <title>Suntabu Blog</title>
 
+    <link rel="canonical" href="">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="/assets/bootstrap.min.css"/>
     <link rel="stylesheet" href="/assets/hux-blog.min.css"/>
@@ -67,31 +65,36 @@
 
         //        console.log(d + "    ->\n" + encodeURIComponent(d))
         $.get("api/md?d=" + encodeURIComponent(d), function (data, status) {
+            try {
+                var ab = JSON.parse(data);
+                document.title = decodeURIComponent(ab.title) + ' - Suntabu Blog';
+                $('link[rel="canonical"]')
+                    .attr('href', window.location);
+                $("#article-title").html(ab.title);
+                var taghtml = "";
+                for (var i = 0; i < ab.tag.length; i++) {
+                    var md = ab.tag[i];
+                    taghtml += "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
 
-            var ab = JSON.parse(data);
-            document.title = decodeURIComponent(ab.title) + ' - Suntabu Blog';
 
-            $("#article-title").html(ab.title);
-            var taghtml = "";
-            for (var i = 0; i < ab.tag.length; i++) {
-                var md = ab.tag[i];
-                taghtml += "<a href=\"/taglist.html?t=" + encodeURIComponent(md) + "\" title=\"" + md + "\" rel=\"3\">" + md + "</a>";
+                }
+                $("#abtag").prepend(taghtml);
 
+
+                $("#article-meta").html("Posted by Suntabu on " + new Date(ab.date).toDateString());
+                $("#contentpos").html(ab.htmlStr);
+
+
+                if (ab.tag.length > 0) {
+                    $.get("api/tagrelated?t=" + encodeURIComponent(ab.tag[0]), function (data, status) {
+                        $("#related").prepend(data);
+                    });
+                }
 
             }
-            $("#abtag").prepend(taghtml);
+            catch (e) {
 
-
-            $("#article-meta").html("Posted by Suntabu on " + new Date(ab.date).toDateString());
-            $("#contentpos").html(ab.htmlStr);
-
-
-            if (ab.tag.length > 0) {
-                $.get("api/tagrelated?t=" + encodeURIComponent(ab.tag[0]), function (data, status) {
-                    $("#related").prepend(data);
-                });
             }
-
 
         });
 
