@@ -11,12 +11,12 @@
         $.ajax({
             type: "POST",
             url: "/api/post",
-            data : $('#myform').serialize(),
-            async:false,
-            error: function(request) {
-                alert("Connection error:"+request.error);
+            data: $('#myform').serialize(),
+            async: false,
+            error: function (request) {
+                alert("Connection error:" + request.error);
             },
-            success: function(data) {
+            success: function (data) {
                 alert("SUCCESS!");
                 window.location.href = "index.html"
             }
@@ -36,9 +36,18 @@
             <dt><label for="md_author">Author</label></dt>
             <dd><input class="form-control" id="md_author" name="md_author" size="30" value=""></dd>
         </dl>
+
+
         <dl class="form-group">
             <dt><label for="md_tag">Tag</label></dt>
             <dd><input class="form-control" id="md_tag" name="md_tag" size="30" value=""></dd>
+        </dl>
+        <dl class="form-group">
+            <dt><label for="md_lang">Language</label></dt>
+            <dd><select id="md_lang" class="form-control" name="md_lang" >
+                <option>中文</option>
+                <option>English</option>
+            </select></dd>
         </dl>
         <dl class="form-group">
             <dt><label for="md_content">Content</label></dt>
