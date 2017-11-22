@@ -7,21 +7,45 @@
 </head>
 <body>
 <script type="text/javascript">
-    function posted() {
-        $.ajax({
-            type: "POST",
-            url: "/api/post",
-            data: $('#myform').serialize(),
-            async: false,
-            error: function (request) {
-                alert("Connection error:" + request.error);
-            },
-            success: function (data) {
-                alert("SUCCESS!");
-                window.location.href = "index.html"
-            }
-        });
+    function checkTitle() {
+        var check = false
 
+        if ($("#md_title").val().length > 0) {
+            check = true;
+        } else {
+            alert("Title not set!")
+        }
+        return check;
+    }
+
+    function checkContent() {
+        var check = false
+
+        if ($("#md_content").val().length > 0) {
+            check = true;
+        } else {
+            alert("Content not set!")
+        }
+        return check;
+    }
+
+    function posted() {
+
+        if (checkContent() && checkTitle()) {
+            $.ajax({
+                type: "POST",
+                url: "/api/post",
+                data: $('#myform').serialize(),
+                async: false,
+                error: function (request) {
+                    alert("Connection error:" + request.error);
+                },
+                success: function (data) {
+                    alert("SUCCESS!");
+                    window.location.href = "index.html"
+                }
+            });
+        }
 
         return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
     }
@@ -44,7 +68,7 @@
         </dl>
         <dl class="form-group">
             <dt><label for="md_lang">Language</label></dt>
-            <dd><select id="md_lang" class="form-control" name="md_lang" >
+            <dd><select id="md_lang" class="form-control" name="md_lang">
                 <option>中文</option>
                 <option>English</option>
             </select></dd>
